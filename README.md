@@ -120,6 +120,6 @@ http://öffentlichedomain.de/scanspecifictag.php?item=Presence_1&itemValue=OFF
 Mit dieser Funktion kann man diverse Apps (z.B. [Locative für iOS](https://itunes.apple.com/de/app/locative/id725198453?mt=8)) verwenden um den Status an Hand von z.B. Geolocation zu ändern. Dafür ist es notwendig über das Internet auf das Script zugriff zu haben. Eine der Punkte, welche Fehleranfällig ist - warum ich mich für die hier beschriebene Variante ausspreche.
 
 ## Quelle
-*[hausautomatisierung-koch.de](https://hausautomatisierung-koch.de/2017/01/07/anwesenheitserkennung-bluetooth-beacon/)
-*[loxwiki.eu](http://www.loxwiki.eu/display/LOX/Anwesenheitserkennung+via+Bluetooth+%28BLE%29+und+G-Tags)
-*[php.net](http://php.net)
+* [hausautomatisierung-koch.de](https://hausautomatisierung-koch.de/2017/01/07/anwesenheitserkennung-bluetooth-beacon/)
+* [loxwiki.eu](http://www.loxwiki.eu/display/LOX/Anwesenheitserkennung+via+Bluetooth+%28BLE%29+und+G-Tags)
+* [php.net](http://php.net)

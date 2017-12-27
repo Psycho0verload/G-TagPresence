@@ -29,7 +29,7 @@ sudo apt update
 ```
 Benötigte Pakete installieren
 ```
-sudo apt install nginx php5-fpm php5-curl
+sudo apt install nginx php5-fpm php5-curl bluez
 ```
 Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```
@@ -40,6 +40,48 @@ Kurz PHP neustarten
 ```
 sudo service php5-fpm restart
 ```
+Nginx-Konfiguration (/etc/nginx/sites-available/default)
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html/presence/;
+        index index.php index.html index.htm index.nginx-debian.html;
+        server_name 172.16.0.2;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+        location ~ /\.ht {
+                deny all;
+        }
+}
+```
+Kurz Nginx überprüfen und neustarten
+```
+sudo nginx -t
+sudo service nginx restart
+```
+
+Die Dateien aus diesem GIT-Repository müssen, wie man der Konfiguration entnehmen kann unter ```/var/www/html/presence/``` abgelegt werden.
+
+Nun müssen wir noch die richtigen Rechte für die Datei, welche später den Scan übernimmt vergeben:
+```
+chmod 500 scantag.sh 
+chown root:root scantag.sh
+```
+
+Als nächstes müssen wir dem PHP-Script erlauben, das Scan-Script auszuführen.
+
+Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
+
+sudo visudo
+
+www-data ALL = NOPASSWD:/home/www/wo-auch-immer/scantag.sh 
+
 ```
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1
 ```

@@ -31,6 +31,23 @@ Benötigte Pakete installieren
 ```
 sudo apt install nginx php5-fpm php5-curl bluez
 ```
+
+
+Mit den Kommandos hciconfig und hcitool kann man dann versuchen den Dongle zu aktivieren und die Tags zu scannen:
+```
+hciconfig hci0 up
+hcitool lescan
+```
+Ausgabe wird wie folgt aussehen:
+```
+LE Scan ...
+7C:2F:81:91:A1:B2 (unknown)
+7C:2F:81:91:A1:B2 Gigaset G-tag
+```
+Wenn das nicht klappt, könnt ihr im Internet diverse Tutorials finden, wie das einzurichten ist
+oder wie die Fehlersuche anzugehen ist. Das würde hier den Rahmen sprengen. Ich setzte
+für die weitere Anleitung voraus, dass der Scan klappt. 
+
 Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```
 sudo nano /etc/php5/fpm/php.ini
@@ -73,8 +90,7 @@ Nun müssen wir noch die richtigen Rechte für die Datei, welche später den Sca
 chmod 500 /var/www/html/presence/script/scanspecifictag.sh 
 chown root:root /var/www/html/presence/script/scanspecifictag.sh
 ```
-
-Als nächstes müssen wir dem PHP-Script erlauben, das Scan-Script auszuführen. Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
+Als nächstes erlauben wir dem PHP-Script, das Scan-Script auszuführen. Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
 ```
 sudo visudo
 www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh 

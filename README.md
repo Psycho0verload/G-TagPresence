@@ -35,7 +35,7 @@ PHP + Curl installieren
 ```
 sudo apt install php5-fpm php5-curl
 ```
-Ihr könnt euch PHP generell Einstellen wie man möchte. Für ein wenig mehr Sicherheit: 
+Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```
 sudo nano /etc/php5/fpm/php.ini
 # ;cgi.fix_pathinfo=1 zu cgi.fix_pathinfo=0 ändern

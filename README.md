@@ -98,10 +98,28 @@ Passt noch die Adressen (IP/Domain zu openHAB2 REST API) und Pfade (Zur scanspec
 an.
 
 Wenn wir alles richtig gemacht haben können wir das Script aus der Kommandozeile heraus testen:
-``````
+```
+/usr/bin/php scanspecifictag.php tagMac=7C:2F:80:CE:EF:44 item=PresenceGtag_1
+```
+Wenn der Test funktioniert hat können wir noch einen Cronjob einrichten um die Anwesenheit des Tags regelmäßig abzufragen. Da ich mehrer Tags abfrage und der Bluthooth-Service immer nur durch einen Cron genutzt werden kann habe ich eine Datei angelegt, welche ich durch den Cronjob aufrufen lasse, welche alle Abfragen nach der Reihe durchführt. Siehe ```cronjob.sh```
 
 ```
+sudo crontab -e
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1
 ```
+###Hinweis
+Das Script kann alternativ auch über eine URL augerufen werden:
+```
+http://deinedomain.local/scanspecifictag.php?tagMac=7C:2F:80:CE:EF:44&item=PresenceGtag_1
+```
+
+Ursprüngliche habe ich Teile dieses Scripts für die Verwendung von Geofancy bzw. Raspberry Pi als Beacon geschrieben. Diese Funktion habe ich in dieser überarbeiteten Variante weiterhin implementiert. So ist es möglich mit folgenden Parametern im URL den State eines Switches zu ändern:
+```
+http://öffentlichedomain.de/scanspecifictag.php?item=Presence_1&itemValue=OFF
+```
+Mit dieser Funktion kann man diverse Apps (z.B. [Locative für iOS](https://itunes.apple.com/de/app/locative/id725198453?mt=8)) verwenden um den Status an Hand von z.B. Geolocation zu ändern. Dafür ist es notwendig über das Internet auf das Script zugriff zu haben. Eine der Punkte, welche Fehleranfällig ist - warum ich mich für die hier beschriebene Variante ausspreche.
+
 ## Quelle
 *[hausautomatisierung-koch.de](https://hausautomatisierung-koch.de/2017/01/07/anwesenheitserkennung-bluetooth-beacon/)
+*[loxwiki.eu](http://www.loxwiki.eu/display/LOX/Anwesenheitserkennung+via+Bluetooth+%28BLE%29+und+G-Tags)
+*[php.net](http://php.net)

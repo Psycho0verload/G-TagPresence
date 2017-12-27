@@ -93,7 +93,12 @@ Als nächstes erlauben wir dem PHP-Script, das Scan-Script auszuführen. Dies er
 sudo visudo
 www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh 
 ```
-Passt noch die Adressen (IP/Domain zu openHAB2 REST API) und Pfade in der ```/var/www/html/presence/scanspecifictag.php``` an.
+Passt noch die Adressen (IP/Domain zu openHAB2 REST API) und Pfade (Zur scanspecifictag.sh-Datei) in der
+```/var/www/html/presence/scanspecifictag.php```
+an.
+
+Wenn wir alles richtig gemacht haben können wir das Script aus der Kommandozeile heraus testen:
+``````
 
 ```
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1

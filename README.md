@@ -20,5 +20,7 @@ Viele Menschen verlassen Ihr Haus/Wohnung nicht ohne ihr Handy aber auch nicht o
 * [Raspberry Pi 3](https://geizhals.de/raspberry-pi-3-modell-b-a1526643.html)
 * [Gigaset G-tag Schlüsselfinder](https://geizhals.de/?cat=gsmzub&asuch=gigaset+g-tag&bpmin=&bpmax=&v=e&hloc=at&hloc=de&plz=&dist=&filter=aktualisieren&mail=&sort=t)
 
+*/1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1
+
 ## Quelle
 *[hausautomatisierung-koch.de](https://hausautomatisierung-koch.de/2017/01/07/anwesenheitserkennung-bluetooth-beacon/)

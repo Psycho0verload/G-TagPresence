@@ -70,17 +70,15 @@ Die Dateien aus diesem GIT-Repository müssen, wie man der Konfiguration entnehm
 
 Nun müssen wir noch die richtigen Rechte für die Datei, welche später den Scan übernimmt vergeben:
 ```
-chmod 500 scantag.sh 
-chown root:root scantag.sh
+chmod 500 /var/www/html/presence/script/scanspecifictag.sh 
+chown root:root /var/www/html/presence/script/scanspecifictag.sh
 ```
 
-Als nächstes müssen wir dem PHP-Script erlauben, das Scan-Script auszuführen.
-
-Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
-
+Als nächstes müssen wir dem PHP-Script erlauben, das Scan-Script auszuführen. Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
+```
 sudo visudo
-
-www-data ALL = NOPASSWD:/home/www/wo-auch-immer/scantag.sh 
+www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh 
+```
 
 ```
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1

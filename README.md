@@ -38,9 +38,13 @@ sudo apt install php5-fpm php5-curl
 Ihr könnt euch PHP generell Einstellen wie man möchte. Für ein wenig mehr Sicherheit: 
 ```
 sudo nano /etc/php5/fpm/php.ini
-#;cgi.fix_pathinfo=1 to cgi.fix_pathinfo=0
+# ;cgi.fix_pathinfo=1 zu cgi.fix_pathinfo=0 ändern
+```
+Kurz PHP neustarten
 ```
 sudo service php5-fpm restart
+```
+```
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1
 ```
 ## Quelle

@@ -107,7 +107,7 @@ Wenn der Test funktioniert hat können wir noch einen Cronjob einrichten um die 
 sudo crontab -e
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1
 ```
-###Hinweis
+### Hinweis
 Das Script kann alternativ auch über eine URL augerufen werden:
 ```
 http://deinedomain.local/scanspecifictag.php?tagMac=7C:2F:80:CE:EF:44&item=PresenceGtag_1

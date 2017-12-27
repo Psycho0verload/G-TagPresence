@@ -32,7 +32,6 @@ Benötigte Pakete installieren
 sudo apt install nginx php5-fpm php5-curl bluez
 ```
 
-
 Mit den Kommandos hciconfig und hcitool kann man dann versuchen den Dongle zu aktivieren und die Tags zu scannen:
 ```
 hciconfig hci0 up
@@ -41,12 +40,11 @@ hcitool lescan
 Ausgabe wird wie folgt aussehen:
 ```
 LE Scan ...
-7C:2F:81:91:A1:B2 (unknown)
-7C:2F:81:91:A1:B2 Gigaset G-tag
+7C:2F:80:CE:EF:44 (unknown)
+7C:2F:80:CE:EF:44 Gigaset G-tag
 ```
-Wenn das nicht klappt, könnt ihr im Internet diverse Tutorials finden, wie das einzurichten ist
-oder wie die Fehlersuche anzugehen ist. Das würde hier den Rahmen sprengen. Ich setzte
-für die weitere Anleitung voraus, dass der Scan klappt. 
+
+Sollte dies nicht funktionieren bitte ich euch Google zu bemühen - es gibt diverse Tutorials. Das der Scan funktioniert ist die Grundvoraussetzung.
 
 Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```
@@ -95,6 +93,7 @@ Als nächstes erlauben wir dem PHP-Script, das Scan-Script auszuführen. Dies er
 sudo visudo
 www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh 
 ```
+Passt noch die Adressen (IP/Domain zu openHAB2 REST API) und Pfade in der ```/var/www/html/presence/scanspecifictag.php``` an.
 
 ```
 */1 * * * * sh /var/www/html/presence/cronjob.sh > /var/log/cron_gtag.log 2>&1

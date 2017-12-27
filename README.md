@@ -27,13 +27,9 @@ Paketliste aktualisieren
 ```
 sudo apt update
 ```
-Nginx installieren
+Benötigte Pakete installieren
 ```
-sudo apt install nginx
-```
-PHP + Curl installieren 
-```
-sudo apt install php5-fpm php5-curl
+sudo apt install nginx php5-fpm php5-curl
 ```
 Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```

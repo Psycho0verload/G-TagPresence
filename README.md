@@ -99,7 +99,7 @@ an.
 
 Wenn wir alles richtig gemacht haben können wir das Script aus der Kommandozeile heraus testen:
 ```
-/usr/bin/php scanspecifictag.php tagMac=7C:2F:80:CE:EF:44 item=PresenceGtag_1
+/usr/bin/php /var/www/html/presence/scanspecifictag.php tagMac=7C:2F:80:CE:EF:44 item=PresenceGtag_1
 ```
 Wenn der Test funktioniert hat können wir noch einen Cronjob einrichten um die Anwesenheit des Tags regelmäßig abzufragen. Da ich mehrer Tags abfrage und der Bluthooth-Service immer nur durch einen Cron genutzt werden kann habe ich eine Datei angelegt, welche ich durch den Cronjob aufrufen lasse, welche alle Abfragen nach der Reihe durchführt. Siehe ```cronjob.sh```
 

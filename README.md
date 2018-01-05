@@ -30,8 +30,9 @@ sudo apt update
 Benötigte Pakete installieren
 ```
 sudo apt install nginx php5-fpm php5-curl bluez
+# beziehungsweise
+sudo apt install nginx php7.0-fpm php7.0-curl bluez
 ```
-
 Mit den Kommandos hciconfig und hcitool kann man dann versuchen den Dongle zu aktivieren und die Tags zu scannen:
 ```
 hciconfig hci0 up

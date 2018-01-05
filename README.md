@@ -120,7 +120,7 @@ sudo git clone https://github.com/Psycho0verload/G-tagPresence.git /var/www/html
 Nun müssen wir noch die richtigen Rechte für die Datei, welche später den Scan übernimmt vergeben:
 ```
 sudo chmod 500 /var/www/html/presence/script/scanspecifictag.sh 
-sudo chown root:root /var/www/html/presence/script/scanspecifictag.sh
+sudo chown -cR root:root /var/www/html/presence/script
 ```
 Als nächstes erlauben wir dem PHP-Script, das Scan-Script auszuführen. Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
 ```

@@ -112,6 +112,11 @@ sudo service nginx restart
 
 Die Dateien aus diesem GIT-Repository müssen, wie man der Konfiguration entnehmen kann unter ```/var/www/html/presence/``` abgelegt werden.
 
+```
+sudo apt install git-core
+sudo git clone https://github.com/Psycho0verload/G-tagPresence.git /var/www/html/presence
+```
+
 Nun müssen wir noch die richtigen Rechte für die Datei, welche später den Scan übernimmt vergeben:
 ```
 chmod 500 /var/www/html/presence/script/scanspecifictag.sh 
@@ -120,7 +125,8 @@ chown root:root /var/www/html/presence/script/scanspecifictag.sh
 Als nächstes erlauben wir dem PHP-Script, das Scan-Script auszuführen. Dies erfolgt mit Hilfe des folgenden Kommandos und Hinzufügen des Eintrags für www-data:
 ```
 sudo visudo
-www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh 
+www-data ALL = NOPASSWD:/var/www/html/presence/script/scanspecifictag.sh
+# Unter: User privilege specification
 ```
 Passt noch die Adressen (IP/Domain zu openHAB2 REST API) und Pfade (Zur scanspecifictag.sh-Datei) in der
 ```/var/www/html/presence/scanspecifictag.php```

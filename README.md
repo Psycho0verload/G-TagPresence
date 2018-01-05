@@ -35,8 +35,8 @@ sudo apt install nginx php7.0-fpm php7.0-curl bluez
 ```
 Mit den Kommandos hciconfig und hcitool kann man dann versuchen den Dongle zu aktivieren und die Tags zu scannen:
 ```
-hciconfig hci0 up
-hcitool lescan
+sudo hciconfig hci0 up
+sudo hcitool lescan
 ```
 Ausgabe wird wie folgt aussehen:
 ```
@@ -50,13 +50,21 @@ Sollte dies nicht funktionieren bitte ich euch Google zu bemühen - es gibt dive
 Ihr könnt euch PHP generell Einstellen wie Ihr es benötig. Für ein wenig mehr Sicherheit sollte man folgendes deaktivieren: 
 ```
 sudo nano /etc/php5/fpm/php.ini
+```
+oder
+```
+sudo nano /etc/php/7.0/fpm/php.ini
 # ;cgi.fix_pathinfo=1 zu cgi.fix_pathinfo=0 ändern
 ```
 Kurz PHP neustarten
 ```
 sudo service php5-fpm restart
 ```
-Nginx-Konfiguration (/etc/nginx/sites-available/default)
+bzw.
+```
+sudo service php7.0-fpm restart
+```
+Nginx-Konfiguration (sudo nano /etc/nginx/sites-available/default)
 ```
 server {
         listen 80 default_server;
@@ -70,6 +78,26 @@ server {
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
                 fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+        location ~ /\.ht {
+                deny all;
+        }
+}
+```
+Für PHP 7:
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /var/www/html/presence/;
+        index index.php index.html index.htm index.nginx-debian.html;
+        server_name 172.16.0.2;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
         }
         location ~ /\.ht {
                 deny all;
